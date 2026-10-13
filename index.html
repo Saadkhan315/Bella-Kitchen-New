@@ -3,123 +3,261 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Discover delicious food at Bella Kitchen. Explore our menu and contact us to order.">
-  <title>Bella Kitchen | Good Food, Good Moments</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173b2d">
+  <meta name="description" content="Explore the Bella Kitchen practice restaurant menu, discover our concept, and find contact information.">
+  <title>Bella Kitchen | Good Food, Beautiful Moments</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
-<body>
-  <header class="site-header">
-    <a class="logo" href="#home">Bella<span>Kitchen.</span></a>
 
-    <button class="menu-toggle" id="menuToggle"
-      aria-label="Open navigation" aria-expanded="false">
-      ☰
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="logo" href="#home" aria-label="Bella Kitchen home">
+      bella<span>kitchen</span><span class="logo-dot">.</span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      type="button"
+      aria-label="Open navigation"
+      aria-controls="navigation"
+      aria-expanded="false">
+      <span></span>
+      <span></span>
     </button>
 
-    <nav id="navigation" class="navigation">
+    <nav id="navigation" class="navigation" aria-label="Main navigation">
       <a href="#home">Home</a>
       <a href="#menu">Our Menu</a>
-      <a href="#about">About</a>
+      <a href="#about">Our Story</a>
       <a href="#contact">Contact</a>
+      <a class="nav-cta" href="#menu">Explore dishes <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
 
-  <main>
-    <section class="hero" id="home">
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-overlay"></div>
+
       <div class="hero-content">
-        <p class="eyebrow">FRESHLY MADE, LOVINGLY SERVED</p>
-        <h1>Good food.<br>Great moments.</h1>
-        <p class="hero-description">
-          Delicious flavours, fresh ingredients, and meals
-          made to bring people together.
+        <p class="eyebrow hero-eyebrow">
+          <span class="eyebrow-line"></span>
+          A LITTLE TASTE OF SOMETHING SPECIAL
         </p>
-        <a class="button" href="#menu">Explore Our Menu</a>
+
+        <h1 id="hero-title">
+          Gather around<br>
+          <em>something good.</em>
+        </h1>
+
+        <p class="hero-description">
+          Discover comforting favourites, inviting flavours, and a
+          restaurant experience made for sharing good moments.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#menu">
+            Discover the menu <span aria-hidden="true">↗</span>
+          </a>
+          <a class="hero-secondary-link" href="#about">A little about us</a>
+        </div>
+
+        <div class="hero-note">
+          <span class="hero-note-mark" aria-hidden="true">✳</span>
+          <span>A restaurant concept made with care</span>
+        </div>
+      </div>
+
+      <div class="hero-side-note" aria-hidden="true">
+        GOOD FOOD · GOOD COMPANY
       </div>
     </section>
 
-    <section class="section" id="menu">
+    <section class="intro-strip" aria-label="Our approach">
+      <p>Thoughtfully prepared</p>
+      <span aria-hidden="true">✳</span>
+      <p>Made for sharing</p>
+      <span aria-hidden="true">✳</span>
+      <p>Always welcoming</p>
+    </section>
+
+    <section class="section menu-section" id="menu">
       <div class="section-heading">
-        <p class="eyebrow">MADE FOR YOUR CRAVINGS</p>
-        <h2>Customer Favourites</h2>
-        <p>Practice menu and prices — replace these with the restaurant's real offerings.</p>
+        <div>
+          <p class="eyebrow">A FEW HOUSE FAVOURITES</p>
+          <h2>Good things<br><em>on the table.</em></h2>
+        </div>
+
+        <p class="section-description">
+          Take a look at our sample menu. Dish names, descriptions, and
+          prices are examples and must be verified before this site is
+          used by a real restaurant.
+        </p>
       </div>
 
       <div class="menu-grid">
         <article class="food-card">
-          <img
-            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80"
-            alt="Burger served with fresh ingredients"
-            loading="lazy">
+          <div class="food-image-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80"
+              alt="Burger with a toasted bun and fresh ingredients"
+              width="900"
+              height="700"
+              fetchpriority="high">
+            <span class="food-number">01</span>
+          </div>
+
           <div class="food-info">
-            <h3>Classic Beef Burger</h3>
-            <p>Juicy burger, fresh vegetables, and house sauce.</p>
-            <div class="food-bottom">
-              <strong>Rs. 850</strong>
-              <a class="text-link" href="#contact">Order info →</a>
+            <div class="food-title-row">
+              <h3>Classic Beef Burger</h3>
+              <span class="food-price">Rs. 850</span>
             </div>
+            <p>A satisfying burger with fresh vegetables and a savoury sauce.</p>
+            <a class="text-link" href="#contact">
+              Ask about this dish <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </article>
 
         <article class="food-card">
-          <img
-            src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=900&q=80"
-            alt="Freshly prepared pizza"
-            loading="lazy">
+          <div class="food-image-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=900&q=80"
+              alt="Freshly baked pizza with colourful toppings"
+              width="900"
+              height="700"
+              loading="lazy">
+            <span class="food-number">02</span>
+          </div>
+
           <div class="food-info">
-            <h3>Garden Special Pizza</h3>
-            <p>Cheese, vegetables, herbs, and a crispy crust.</p>
-            <div class="food-bottom">
-              <strong>Rs. 1,200</strong>
-              <a class="text-link" href="#contact">Order info →</a>
+            <div class="food-title-row">
+              <h3>Garden Special Pizza</h3>
+              <span class="food-price">Rs. 1,200</span>
             </div>
+            <p>A colourful combination of vegetables, cheese, and herbs.</p>
+            <a class="text-link" href="#contact">
+              Ask about this dish <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </article>
 
         <article class="food-card">
-          <img
-            src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80"
-            alt="Pizza topped with cheese and vegetables"
-            loading="lazy">
+          <div class="food-image-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80"
+              alt="Pizza topped with cheese and vegetables"
+              width="900"
+              height="700"
+              loading="lazy">
+            <span class="food-number">03</span>
+          </div>
+
           <div class="food-info">
-            <h3>Cheese Lovers Pizza</h3>
-            <p>A rich, cheesy favourite made for sharing.</p>
-            <div class="food-bottom">
-              <strong>Rs. 1,450</strong>
-              <a class="text-link" href="#contact">Order info →</a>
+            <div class="food-title-row">
+              <h3>Cheese Lovers Pizza</h3>
+              <span class="food-price">Rs. 1,450</span>
             </div>
+            <p>A rich, cheesy pizza concept made for sharing around the table.</p>
+            <a class="text-link" href="#contact">
+              Ask about this dish <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </article>
       </div>
-    </section>
 
-    <section class="about section" id="about">
-      <p class="eyebrow">OUR STORY</p>
-      <h2>Simple ingredients. Memorable flavours.</h2>
-      <p>
-        Bella Kitchen is a practice restaurant concept built around
-        fresh food and friendly service. Replace this text with the
-        real restaurant's story before publishing for a client.
+      <p class="menu-disclaimer">
+        Practice menu only. Confirm actual dishes, ingredients, availability,
+        and prices before publishing for a restaurant.
       </p>
     </section>
 
-    <section class="contact section" id="contact">
-      <p class="eyebrow">COME SAY HELLO</p>
-      <h2>Let's make your next meal special.</h2>
-      <p><strong>Opening hours:</strong> Add verified opening hours here.</p>
-      <p><strong>Location:</strong> Add the real restaurant address here.</p>
-      <p><strong>Phone:</strong> Replace with the restaurant's real number.</p>
-      <a class="button" id="whatsappOrder" href="#">Order on WhatsApp</a>
-      <p class="small-note">
-        Demo website: the WhatsApp button must be configured with a real,
-        authorised business number before it can be used.
-      </p>
+    <section class="story-section" id="about">
+      <div class="story-image">
+        <img
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80"
+          alt="Warmly lit restaurant dining table"
+          width="1200"
+          height="1000"
+          loading="lazy">
+        <span class="image-caption">THE BELLA KITCHEN CONCEPT</span>
+      </div>
+
+      <div class="story-content">
+        <p class="eyebrow">MORE THAN A MEAL</p>
+        <h2>A place for<br><em>the good moments.</em></h2>
+        <p>
+          The best meals are often about more than what is on the plate.
+          They are about conversations, familiar flavours, and time spent
+          with people who matter.
+        </p>
+        <p>
+          Bella Kitchen is a practice restaurant concept. Replace this
+          introduction with the restaurant's verified story before using
+          the website for a real business.
+        </p>
+        <a class="button button-dark" href="#contact">
+          Get in touch <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="contact-inner">
+        <p class="eyebrow">WE'D LOVE TO HEAR FROM YOU</p>
+        <h2>Let's make room<br>for <em>something good.</em></h2>
+        <p class="contact-intro">
+          Planning a visit or have a question about the menu?
+          Use the contact details once the restaurant's real information
+          has been added.
+        </p>
+
+        <div class="contact-details">
+          <div>
+            <span class="detail-label">OPENING HOURS</span>
+            <p>To be confirmed</p>
+          </div>
+          <div>
+            <span class="detail-label">FIND US</span>
+            <p>Restaurant address to be added</p>
+          </div>
+          <div>
+            <span class="detail-label">CALL US</span>
+            <p>Restaurant phone to be added</p>
+          </div>
+        </div>
+
+        <a class="button button-primary" id="whatsappOrder" href="#contact">
+          Ask us on WhatsApp <span aria-hidden="true">↗</span>
+        </a>
+
+        <p class="small-note" id="whatsappNote">
+          Demo contact button. Add an authorised business WhatsApp number
+          in script.js before using it.
+        </p>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>© <span id="year"></span> Bella Kitchen. Practice project.</p>
+    <a class="footer-logo" href="#home">bella<span>kitchen</span>.</a>
+    <p>Good food. Beautiful moments.</p>
+    <p class="copyright">
+      © <span id="year"></span> Bella Kitchen · Practice website
+    </p>
   </footer>
 </body>
 </html>
