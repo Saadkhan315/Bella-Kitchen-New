@@ -1,95 +1,189 @@
 
-const menuToggle = document.querySelector("#menuToggle");
-const navigation = document.querySelector("#navigation");
-const yearElement = document.querySelector("#year");
+/* Bella Kitchen — Website Interactions
+   Premium navigation, accessibility, animations and WhatsApp setup.
+*/
+(() => {
+  'use strict';
 
-// Mobile navigation: open and close the menu.
-if (menuToggle && navigation) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = navigation.classList.toggle("open");
+  // Find website elements
+  const menuToggle = document.getElementById('menuToggle');
+  const navigation = document.getElementById('navigation');
+  const year = document.getElementById('year');
+  const whatsappOrder = document.getElementById('whatsappOrder');
+  const whatsappNote = document.getElementById('whatsappNote');
+  const floatingTop = document.querySelector('.back-to-top-floating');
 
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-    menuToggle.setAttribute(
-      "aria-label",
-      isOpen ? "Close navigation" : "Open navigation"
-    );
-  });
+  const navLinks = navigation
+    ? navigation.querySelectorAll('a[href^="#"]')
+    : [];
 
-  // Close the menu after a navigation link is selected.
-  navigation.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      navigation.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.setAttribute("aria-label", "Open navigation");
+  // Automatically update the footer year
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
+
+  // Accessible mobile navigation
+  function closeMenu() {
+    if (!menuToggle || !navigation) return;
+
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Open navigation');
+    navigation.classList.remove('is-open');
+    document.body.classList.remove('menu-open');
+  }
+
+  function openMenu() {
+    if (!menuToggle || !navigation) return;
+
+    menuToggle.setAttribute('aria-expanded', 'true');
+    menuToggle.setAttribute('aria-label', 'Close navigation');
+    navigation.classList.add('is-open');
+    document.body.classList.add('menu-open');
+  }
+
+  if (menuToggle && navigation) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen =
+        menuToggle.getAttribute('aria-expanded') === 'true';
+
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
-  });
 
-  // Let keyboard users close the mobile menu with Escape.
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      navigation.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.setAttribute("aria-label", "Open navigation");
-      menuToggle.focus();
-    }
-  });
-}
+    navLinks.forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
 
-// Automatically update the copyright year.
-if (yearElement) {
-  yearElement.textContent = new Date().getFullYear();
-}
+    // Close navigation with Escape
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeMenu();
+      }
+    });
 
-// Add the restaurant's authorised WhatsApp number here.
-// Use international format with digits only: no +, spaces, or dashes.
-// Leave empty until you have the correct number.
-const restaurantWhatsAppNumber = "";
+    // Close mobile navigation on desktop-sized screens
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 760) {
+        closeMenu();
+      }
+    }, { passive: true });
+  }
 
-const whatsappButton = document.querySelector("#whatsappOrder");
-const whatsappNote = document.querySelector("#whatsappNote");
+  // WhatsApp configuration
+  // Replace the empty string with your own authorised business number.
+  // Use country code and digits only, without +, spaces or dashes.
+  const restaurantWhatsAppNumber = '';
 
-if (whatsappButton) {
-  // Accept a number containing 10–15 digits.
-  const hasValidNumber = /^\d{10,15}$/.test(
-    restaurantWhatsAppNumber
-  );
+  const cleanNumber = restaurantWhatsAppNumber.replace(/\D/g, '');
+  const validNumber = /^\d{10,15}$/.test(cleanNumber);
 
-  if (hasValidNumber) {
-    const message = encodeURIComponent(
-      "Hello! I'd like to ask about your menu."
-    );
+  if (whatsappOrder) {
+    if (validNumber) {
+      const message =
+        'Hello Bella Kitchen! I would like to ask about your menu.';
 
-    whatsappButton.href =
-      `https://wa.me/${restaurantWhatsAppNumber}?text=${message}`;
+      whatsappOrder.href =
+        `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
 
-    whatsappButton.target = "_blank";
-    whatsappButton.rel = "noopener noreferrer";
-    whatsappButton.removeAttribute("aria-disabled");
-    whatsappButton.classList.remove("is-disabled");
-
-    if (whatsappNote) {
-      whatsappNote.textContent =
-        "Contact us on WhatsApp to ask about the menu.";
-    }
-  } else {
-    // Do not send visitors to an example or unverified number.
-    whatsappButton.href = "#contact";
-    whatsappButton.setAttribute("aria-disabled", "true");
-    whatsappButton.classList.add("is-disabled");
-
-    if (whatsappNote) {
-      whatsappNote.textContent =
-        "Demo contact button. Add the authorised business number in script.js to enable WhatsApp.";
-    }
-
-    whatsappButton.addEventListener("click", (event) => {
-      event.preventDefault();
+      whatsappOrder.target = '_blank';
+      whatsappOrder.rel = 'noopener noreferrer';
+      whatsappOrder.removeAttribute('aria-disabled');
 
       if (whatsappNote) {
         whatsappNote.textContent =
-          "WhatsApp is not configured yet. Add the correct business number in script.js first.";
+          'WhatsApp will open in a new tab.';
       }
+    } else {
+      whatsappOrder.href = '#contact';
+      whatsappOrder.setAttribute('aria-disabled', 'true');
+
+      whatsappOrder.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        if (whatsappNote) {
+          whatsappNote.textContent =
+            'WhatsApp ordering is not activated yet. Add your authorised business number in script.js.';
+          whatsappNote.classList.add('note-highlight');
+        }
+      });
+    }
+  }
+
+  // Allow menu items to create a dish-specific WhatsApp enquiry
+  document.querySelectorAll('[data-dish]').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (!validNumber || !whatsappOrder) return;
+
+      const dish = link.getAttribute('data-dish') || 'the menu';
+
+      const message =
+        `Hello Bella Kitchen! I would like to ask about ${dish}.`;
+
+      whatsappOrder.href =
+        `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
+    });
+  });
+
+  // Smooth reveal animations for sections
+  const revealItems = document.querySelectorAll('.reveal');
+
+  const reduceMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    const observer = new IntersectionObserver(
+      (entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            currentObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -35px 0px'
+      }
+    );
+
+    revealItems.forEach((item) => {
+      observer.observe(item);
+    });
+  } else {
+    // Keep content visible if animations are unsupported
+    revealItems.forEach((item) => {
+      item.classList.add('is-visible');
     });
   }
-}
- 
+
+  // Back-to-top button
+  function updateTopButton() {
+    if (!floatingTop) return;
+
+    floatingTop.classList.toggle(
+      'is-visible',
+      window.scrollY > 500
+    );
+  }
+
+  updateTopButton();
+
+  window.addEventListener('scroll', updateTopButton, {
+    passive: true
+  });
+
+  if (floatingTop) {
+    floatingTop.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      window.scrollTo({
+        top: 0,
+        behavior: reduceMotion ? 'auto' : 'smooth'
+      });
+    });
+  }
+})();
