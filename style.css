@@ -1,23 +1,86 @@
-:root {
-  --green: #173b2d;
-  --green-dark: #10291f;
-  --cream: #fbf7ef;
-  --cream-dark: #f0e8da;
-  --orange: #e9a14b;
-  --text: #252922;
-  --muted: #696d66;
-  --white: #ffffff;
-  --border: rgba(37, 41, 34, 0.12);
+/* ==================================
+   BELLA KITCHEN — LUXURY POLISH
+   ================================== */
 
-  --font-body: "DM Sans", sans-serif;
-  --font-heading: "Playfair Display", Georgia, serif;
+/* Elegant sticky header */
+.site-header {
+  box-shadow: 0 5px 25px rgba(16, 41, 31, 0.04);
+  transition: box-shadow 250ms ease;
+}
 
-  --page-width: 1200px;
-  --header-height: 82px;
+/* Refined navigation links */
+.navigation a:not(.nav-cta) {
+  position: relative;
+}
 
-  --luxury-shadow: 0 18px 45px rgba(16, 41, 31, 0.10);
-  --luxury-radius: 18px;
-  --luxury-transition: 250ms ease;
+.navigation a:not(.nav-cta)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  left: 0;
+  height: 2px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms ease;
+}
+
+.navigation a:not(.nav-cta):hover::after {
+  transform: scaleX(1);
+}
+
+/* Premium buttons */
+.button {
+  border-radius: 5px;
+  letter-spacing: 0.2px;
+  box-shadow: 0 5px 16px rgba(16, 41, 31, 0.08);
+}
+
+.button-primary {
+  box-shadow: 0 8px 22px rgba(233, 161, 75, 0.18);
+}
+
+/* Refined food cards */
+.food-card {
+  border-radius: var(--luxury-radius);
+  box-shadow: 0 5px 20px rgba(16, 41, 31, 0.035);
+}
+
+.food-card img {
+  transition: transform 450ms ease;
+}
+
+.food-card:hover {
+  box-shadow: var(--luxury-shadow);
+}
+
+.food-image-wrap {
+  border-radius: var(--luxury-radius) var(--luxury-radius) 0 0;
+}
+
+/* More comfortable text spacing */
+.food-info h3 {
+  letter-spacing: -0.3px;
+}
+
+.section-heading {
+  gap: 28px;
+}
+
+/* Smooth, accessible interactions */
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .food-card,
+  .food-card img,
+  .button,
+  .navigation a::after {
+    transition: none !important;
+  }
 }
 * {
   box-sizing: border-box;
