@@ -1,21 +1,26 @@
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#173b2d">
-  <meta name="description" content="Explore the Bella Kitchen practice restaurant menu, discover our concept, and find contact information.">
+  <meta name="description" content="Discover the Bella Kitchen restaurant concept: comforting favourites, inviting flavours, and a menu made for sharing good moments.">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bella Kitchen | Good Food, Beautiful Moments">
+  <meta property="og:description" content="A warm restaurant concept with comforting favourites and beautiful moments around the table.">
+
   <title>Bella Kitchen | Good Food, Beautiful Moments</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1800&q=85">
 
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
     rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
@@ -25,7 +30,7 @@
 
   <header class="site-header">
     <a class="logo" href="#home" aria-label="Bella Kitchen home">
-      bella<span>kitchen</span><span class="logo-dot">.</span>
+      bella<span>kitchen</span><span class="logo-dot" aria-hidden="true">.</span>
     </a>
 
     <button
@@ -50,12 +55,12 @@
 
   <main id="main">
     <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="hero-overlay"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="hero-content">
         <p class="eyebrow hero-eyebrow">
-          <span class="eyebrow-line"></span>
-          A LITTLE TASTE OF SOMETHING SPECIAL
+          <span class="eyebrow-line" aria-hidden="true"></span>
+          GOOD FOOD · BEAUTIFUL MOMENTS
         </p>
 
         <h1 id="hero-title">
@@ -64,15 +69,16 @@
         </h1>
 
         <p class="hero-description">
-          Discover comforting favourites, inviting flavours, and a
-          restaurant experience made for sharing good moments.
+          From comforting favourites to flavours worth sharing, discover a
+          welcoming restaurant concept made for slowing down and enjoying
+          the moment.
         </p>
 
         <div class="hero-actions">
           <a class="button button-primary" href="#menu">
-            Discover the menu <span aria-hidden="true">↗</span>
+            Explore the menu <span aria-hidden="true">↗</span>
           </a>
-          <a class="hero-secondary-link" href="#about">A little about us</a>
+          <a class="hero-secondary-link" href="#about">Discover our story</a>
         </div>
 
         <div class="hero-note">
@@ -86,7 +92,7 @@
       </div>
     </section>
 
-    <section class="intro-strip" aria-label="Our approach">
+    <section class="intro-strip" aria-label="The Bella Kitchen approach">
       <p>Thoughtfully prepared</p>
       <span aria-hidden="true">✳</span>
       <p>Made for sharing</p>
@@ -94,17 +100,18 @@
       <p>Always welcoming</p>
     </section>
 
-    <section class="section menu-section" id="menu">
+    <section class="section menu-section" id="menu" aria-labelledby="menu-title">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">A FEW HOUSE FAVOURITES</p>
-          <h2>Good things<br><em>on the table.</em></h2>
+          <p class="eyebrow">A TASTE OF BELLA KITCHEN</p>
+          <h2 id="menu-title">Good things<br><em>on the table.</em></h2>
         </div>
 
         <p class="section-description">
-          Take a look at our sample menu. Dish names, descriptions, and
-          prices are examples and must be verified before this site is
-          used by a real restaurant.
+          Explore a selection of menu concepts, from a satisfying classic
+          burger to pizzas made for sharing. The dishes and prices below are
+          examples and must be confirmed before this site represents a real
+          restaurant.
         </p>
       </div>
 
@@ -113,11 +120,11 @@
           <div class="food-image-wrap">
             <img
               src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80"
-              alt="Burger with a toasted bun and fresh ingredients"
+              alt="Classic burger with a toasted bun, patty, and fresh toppings"
               width="900"
               height="700"
               fetchpriority="high">
-            <span class="food-number">01</span>
+            <span class="food-number" aria-label="Menu item 1">01</span>
           </div>
 
           <div class="food-info">
@@ -125,8 +132,8 @@
               <h3>Classic Beef Burger</h3>
               <span class="food-price">Rs. 850</span>
             </div>
-            <p>A satisfying burger with fresh vegetables and a savoury sauce.</p>
-            <a class="text-link" href="#contact">
+            <p>A satisfying burger layered with fresh vegetables and savoury sauce.</p>
+            <a class="text-link" href="#contact" aria-label="Ask Bella Kitchen about the Classic Beef Burger">
               Ask about this dish <span aria-hidden="true">↗</span>
             </a>
           </div>
@@ -136,11 +143,11 @@
           <div class="food-image-wrap">
             <img
               src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=900&q=80"
-              alt="Freshly baked pizza with colourful toppings"
+              alt="Freshly baked pizza topped with colourful vegetables and cheese"
               width="900"
               height="700"
               loading="lazy">
-            <span class="food-number">02</span>
+            <span class="food-number" aria-label="Menu item 2">02</span>
           </div>
 
           <div class="food-info">
@@ -148,8 +155,8 @@
               <h3>Garden Special Pizza</h3>
               <span class="food-price">Rs. 1,200</span>
             </div>
-            <p>A colourful combination of vegetables, cheese, and herbs.</p>
-            <a class="text-link" href="#contact">
+            <p>A colourful combination of vegetables, melted cheese, and herbs.</p>
+            <a class="text-link" href="#contact" aria-label="Ask Bella Kitchen about the Garden Special Pizza">
               Ask about this dish <span aria-hidden="true">↗</span>
             </a>
           </div>
@@ -159,11 +166,11 @@
           <div class="food-image-wrap">
             <img
               src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80"
-              alt="Pizza topped with cheese and vegetables"
+              alt="Pizza with a golden crust, melted cheese, and vegetable toppings"
               width="900"
               height="700"
               loading="lazy">
-            <span class="food-number">03</span>
+            <span class="food-number" aria-label="Menu item 3">03</span>
           </div>
 
           <div class="food-info">
@@ -171,8 +178,8 @@
               <h3>Cheese Lovers Pizza</h3>
               <span class="food-price">Rs. 1,450</span>
             </div>
-            <p>A rich, cheesy pizza concept made for sharing around the table.</p>
-            <a class="text-link" href="#contact">
+            <p>A rich, cheesy pizza concept created for sharing around the table.</p>
+            <a class="text-link" href="#contact" aria-label="Ask Bella Kitchen about the Cheese Lovers Pizza">
               Ask about this dish <span aria-hidden="true">↗</span>
             </a>
           </div>
@@ -180,16 +187,16 @@
       </div>
 
       <p class="menu-disclaimer">
-        Practice menu only. Confirm actual dishes, ingredients, availability,
-        and prices before publishing for a restaurant.
+        Sample menu only. Confirm dishes, ingredients, allergen information,
+        availability, and prices before publishing for a real restaurant.
       </p>
     </section>
 
-    <section class="story-section" id="about">
+    <section class="story-section" id="about" aria-labelledby="story-title">
       <div class="story-image">
         <img
           src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80"
-          alt="Warmly lit restaurant dining table"
+          alt="An inviting restaurant table set in a warmly lit dining room"
           width="1200"
           height="1000"
           loading="lazy">
@@ -198,16 +205,16 @@
 
       <div class="story-content">
         <p class="eyebrow">MORE THAN A MEAL</p>
-        <h2>A place for<br><em>the good moments.</em></h2>
+        <h2 id="story-title">A place for<br><em>the good moments.</em></h2>
         <p>
           The best meals are often about more than what is on the plate.
           They are about conversations, familiar flavours, and time spent
           with people who matter.
         </p>
         <p>
-          Bella Kitchen is a practice restaurant concept. Replace this
-          introduction with the restaurant's verified story before using
-          the website for a real business.
+          Bella Kitchen is currently a restaurant website concept. Add the
+          restaurant's real story, team, and values here before using this
+          website for a real business.
         </p>
         <a class="button button-dark" href="#contact">
           Get in touch <span aria-hidden="true">↗</span>
@@ -215,14 +222,14 @@
       </div>
     </section>
 
-    <section class="contact-section" id="contact">
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
       <div class="contact-inner">
         <p class="eyebrow">WE'D LOVE TO HEAR FROM YOU</p>
-        <h2>Let's make room<br>for <em>something good.</em></h2>
+        <h2 id="contact-title">Let's make room<br>for <em>something good.</em></h2>
         <p class="contact-intro">
-          Planning a visit or have a question about the menu?
-          Use the contact details once the restaurant's real information
-          has been added.
+          Planning a visit or have a question about the menu? Add verified
+          restaurant contact details below before inviting customers to get
+          in touch.
         </p>
 
         <div class="contact-details">
@@ -240,20 +247,20 @@
           </div>
         </div>
 
-        <a class="button button-primary" id="whatsappOrder" href="#contact">
+        <a class="button button-primary" id="whatsappOrder" href="#contact" aria-describedby="whatsappNote">
           Ask us on WhatsApp <span aria-hidden="true">↗</span>
         </a>
 
         <p class="small-note" id="whatsappNote">
-          Demo contact button. Add an authorised business WhatsApp number
-          in script.js before using it.
+          Demo contact button. Add an authorised business WhatsApp number in
+          script.js before using this feature.
         </p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <a class="footer-logo" href="#home">bella<span>kitchen</span>.</a>
+    <a class="footer-logo" href="#home" aria-label="Bella Kitchen back to top">bella<span>kitchen</span>.</a>
     <p>Good food. Beautiful moments.</p>
     <p class="copyright">
       © <span id="year"></span> Bella Kitchen · Practice website
